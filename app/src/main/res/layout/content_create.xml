@@ -71,28 +71,11 @@
             android:layout_marginTop="16dp"
             android:layout_below="@+id/fieldDesc" android:layout_alignStart="@+id/descTextView"/>
 
-    </LinearLayout>
-
-    <LinearLayout android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:layout_below="@+id/firstLinear"
-                  android:id="@+id/secondLinear"
-                  android:orientation="horizontal"
-                  android:layout_marginTop="16dp">
-
-        <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="PICK DATE"
-                android:layout_weight="1"
-                android:onClick="showDatePickerDialog" />
-
-        <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="PICK TIME"
-                android:onClick="showTimePickerDialog" />
+    <Button
+            android:text="hh:mm dd/MM/yyyy"
+            android:id="@+id/dateButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginTop="12dp"/>
 
     </LinearLayout>
 

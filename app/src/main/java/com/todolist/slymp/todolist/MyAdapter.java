@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.todolist.slymp.todolist.db.TaskContract;
 import com.todolist.slymp.todolist.db.TaskDbHelper;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 
 public class MyAdapter extends ArrayAdapter<Item> {
@@ -45,15 +46,18 @@ public class MyAdapter extends ArrayAdapter<Item> {
 
         final TextView titleView = (TextView) itemView.findViewById(R.id.item_title);
         final TextView descView = (TextView) itemView.findViewById(R.id.item_desc);
-        TextView duetimeView = (TextView) itemView.findViewById(R.id.item_duetime);
+        final TextView duetimeView = (TextView) itemView.findViewById(R.id.item_duetime);
         final TextView idView = (TextView) itemView.findViewById(R.id.item_id);
         final TextView statusView = (TextView) itemView.findViewById(R.id.item_status);
+        final TextView timestampView = (TextView) itemView.findViewById(R.id.item_timestamp);
+
 
         titleView.setText(itemsArrayList.get(position).getTitle());
         descView.setText(itemsArrayList.get(position).getDescription());
         duetimeView.setText(itemsArrayList.get(position).getDue_time());
         idView.setText(Integer.toString(itemsArrayList.get(position).getId()));
         statusView.setText(itemsArrayList.get(position).getStatus());
+        timestampView.setText(itemsArrayList.get(position).getTimestamp_dt());
 
         if (statusView.getText().equals("done"))
             titleView.setPaintFlags((titleView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG));
@@ -69,7 +73,7 @@ public class MyAdapter extends ArrayAdapter<Item> {
                 intent.putExtra("title", String.valueOf(titleView.getText()));
                 intent.putExtra("desc", String.valueOf(descView.getText()));
                 intent.putExtra("id", String.valueOf(idView.getText()));
-                // TODO : Implement due-time intent.putExtra();
+                intent.putExtra("due_time", String.valueOf(timestampView.getText()));
 
                 context.startActivity(intent);
             }
@@ -96,7 +100,11 @@ public class MyAdapter extends ArrayAdapter<Item> {
                 }
                 db.update(TaskContract.TaskEntry.TABLE, values, "_id="+ idView.getText(), null);
                 db.close();
-                ((ListActivity) context).updateList();
+                try {
+                    ((ListActivity) context).updateList();
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
                 return true;
             }
         });
