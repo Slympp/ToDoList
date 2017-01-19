@@ -20,3 +20,13 @@ A simple todo list app running on Android 4.4 (API 19). All data are stored in t
 
 # Take a look
 
+![List Activity](/ReadmeScreenshots/List.jpg?raw=true "Display tasks stored in the database")
+
+![Create Activity](/ReadmeScreenshots/Create.jpg?raw=true "Create a new task")
+
+![Update Activity](/ReadmeScreenshots/Update.jpg?raw=true "Update/delete an existing task")
+
+![Filter bar](/ReadmeScreenshots/Update.jpg?raw=true "Search tasks with keywords")
+
+
+
