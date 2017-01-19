@@ -51,13 +51,17 @@ public class MyAdapter extends ArrayAdapter<Item> {
         final TextView statusView = (TextView) itemView.findViewById(R.id.item_status);
         final TextView timestampView = (TextView) itemView.findViewById(R.id.item_timestamp);
 
-
         titleView.setText(itemsArrayList.get(position).getTitle());
         descView.setText(itemsArrayList.get(position).getDescription());
         duetimeView.setText(itemsArrayList.get(position).getDue_time());
         idView.setText(Integer.toString(itemsArrayList.get(position).getId()));
         statusView.setText(itemsArrayList.get(position).getStatus());
         timestampView.setText(itemsArrayList.get(position).getTimestamp_dt());
+
+        int priorityColor = itemsArrayList.get(position).getPriorityColor();
+
+        if (priorityColor >= 0 && priorityColor <= 2)
+            duetimeView.setTextColor(itemsArrayList.get(position).getColorCodeById(priorityColor));
 
         if (statusView.getText().equals("done"))
             titleView.setPaintFlags((titleView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG));

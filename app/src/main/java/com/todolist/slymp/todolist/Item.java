@@ -1,10 +1,12 @@
 package com.todolist.slymp.todolist;
 
+import android.graphics.Color;
 import android.util.Log;
 
 import java.util.Date;
 
 import static android.content.ContentValues.TAG;
+import static android.graphics.Color.rgb;
 
 public class Item {
 
@@ -40,9 +42,13 @@ public class Item {
         this.id = id;
     }
 
-    public String getStatus() { return status; }
+    public String getStatus() {
+        return status;
+    }
 
-    public void setStatus(String status) { this.status = status; }
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public String getTimestamp_dt() {
         return timestamp_dt;
@@ -52,12 +58,35 @@ public class Item {
         this.timestamp_dt = timestamp_dt;
     }
 
+    public int getPriorityColor() {
+        return priorityColor;
+    }
+
+    public void setPriorityColor(int priorityColor) {
+        this.priorityColor = priorityColor;
+    }
+
+    public static int[] getColorCode() {
+        return colorCode;
+    }
+
+    public static int   getColorCodeById(int id) {
+        return colorCode[id];
+    }
+
     private String title;
     private String description;
     private String due_time;
     private String status;
     private String timestamp_dt;
     private int    id;
+    private int    priorityColor;
+
+    public static final int     PRIO_DATE = 0;
+    public static final int     PRIO_HOUR = 1;
+    public static final int     PRIO_TOOLATE = 2;
+
+    public static final int[]   colorCode = { rgb(34,139,34), Color.rgb(255,140,0), Color.RED};
 
     public Item(String title, String description, String due_time, int id, String status) {
         super();
@@ -67,13 +96,14 @@ public class Item {
         this.id = id;
         this.status = status;
         this.timestamp_dt = due_time;
+        this.priorityColor = 0;
 
 
-        Log.d(TAG, "Item" + id +
+        /*Log.d(TAG, "Item" + id +
                 "\nTitle: " + title +
                 "\nDesc: " + description +
                 "\nDue_time: " + due_time +
                 "\nTimestamp: " + timestamp_dt +
-                "\nStatus: " + status);
+                "\nStatus: " + status);*/
     }
 }

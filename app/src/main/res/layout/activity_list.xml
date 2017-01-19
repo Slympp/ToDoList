@@ -8,6 +8,6 @@
         android:fitsSystemWindows="true"
         tools:context="com.todolist.slymp.todolist.ListActivity">
 
-    <include layout="@layout/content_list"/>
+    <include layout="@layout/content_list" android:layout_height="180dp"/>
 
 </android.support.design.widget.CoordinatorLayout>
