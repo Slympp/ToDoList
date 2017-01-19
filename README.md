@@ -26,7 +26,7 @@ A simple todo list app running on Android 4.4 (API 19). All data are stored in t
 
 ![Update Activity](/ReadmeScreenshots/Update.png?raw=true "Update/delete an existing task")
 
-![Filter bar](/ReadmeScreenshots/Update.png?raw=true "Search tasks with keywords")
+![Filter bar](/ReadmeScreenshots/Filter.png?raw=true "Search tasks with keywords")
 
 
 
