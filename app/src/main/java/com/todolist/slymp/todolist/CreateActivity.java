@@ -47,6 +47,8 @@ public class CreateActivity extends AppCompatActivity {
     private int     mHour;
     private int     mMinute;
 
+    // TODO: ScrollView for API > 19
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

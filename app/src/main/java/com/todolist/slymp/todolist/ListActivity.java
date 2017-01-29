@@ -161,19 +161,21 @@ public class ListActivity extends AppCompatActivity {
         long realtimeTimeStamp = System.currentTimeMillis() / 1000L;
         Date realtimeDate = new Date(realtimeTimeStamp*1000L);
 
+        // TODO: API 24 tooLate detecting issues
+
         sdfInit = new SimpleDateFormat("dd/MM/yyyy");
         String initFormat = sdfInit.format(realtimeDate);
         String renderFormat;
 
-        if (timeStamp > getStartOfDayInMillis(initFormat) && timeStamp < getEndOfDayInMillis(initFormat)) {
-            if (realtimeTimeStamp < timeStamp) {
-                sdfRender = new SimpleDateFormat("H:mm");
-                renderFormat = sdfRender.format(newDate);
-                _item.setPriorityColor(Item.PRIO_HOUR);
-            } else {
-                renderFormat = "Passed";
-                _item.setPriorityColor(Item.PRIO_TOOLATE);
-            }
+        if (realtimeTimeStamp > timeStamp) {
+            renderFormat = "Passed";
+            _item.setPriorityColor(Item.PRIO_TOOLATE);
+
+        } else if (timeStamp > getStartOfDayInMillis(initFormat) && timeStamp < getEndOfDayInMillis(initFormat)) {
+            sdfRender = new SimpleDateFormat("H:mm");
+            renderFormat = sdfRender.format(newDate);
+            _item.setPriorityColor(Item.PRIO_HOUR);
+
         } else {
             sdfRender = new SimpleDateFormat("dd/MM/yyyy");
             renderFormat = sdfRender.format(newDate);
@@ -188,8 +190,6 @@ public class ListActivity extends AppCompatActivity {
         mAdapter = new MyAdapter(this, generateData());
         mTaskListView.setAdapter(mAdapter);
     }
-
-    // TODO : Implementer filtering bar (http://envyandroid.com/align-tabhost-at-bottom/)
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
