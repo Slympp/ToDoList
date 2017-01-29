@@ -161,8 +161,6 @@ public class ListActivity extends AppCompatActivity {
         long realtimeTimeStamp = System.currentTimeMillis() / 1000L;
         Date realtimeDate = new Date(realtimeTimeStamp*1000L);
 
-        // TODO: API 24 tooLate detecting issues
-
         sdfInit = new SimpleDateFormat("dd/MM/yyyy");
         String initFormat = sdfInit.format(realtimeDate);
         String renderFormat;
